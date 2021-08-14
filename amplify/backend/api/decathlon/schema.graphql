@@ -1,0 +1,24 @@
+type Query {
+  getProducts: [Product] @function(name: "decathlon-${env}")
+  getProduct(_id: ID!): Product @function(name: "decathlon-${env}")
+}
+
+type Mutation {
+  saveProduct(input: InputProduct): Product @function(name: "decathlon-${env}")
+  removeProduct(_id: ID!): Product @function (name: "decathlon-${env}")
+  editProduct(_id: ID!, input: InputProduct): Product @function (name: "decathlon-${env}")
+}
+
+
+type Product {
+  _id: ID!
+  name: String!
+  description: String!
+  cost: Int!
+}
+
+input InputProduct {
+  name: String!
+  description: String!
+  cost: Int!
+}
